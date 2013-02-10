@@ -10,6 +10,24 @@ execute pathogen#infect()
 " it creates issues at times
 set shell=/bin/bash
 
-" disable Vi legacy support,
+" Disable Vi legacy support,
 " because I like to be Very IMproved ;)
 set nocompatible
+
+
+" ==== UI ====
+
+" colors
+set background=light
+colorscheme solarized
+
+if !has("gui_running")
+	set  t_Co=256
+endif
+
+" Enable syntax coloring
+syntax enable
+
+" Show line numbers in the gutter
+set number
+
