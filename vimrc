@@ -162,5 +162,12 @@ set incsearch
 
 " === Syntastic ===
 
-" JSlint options
+" Javascript
+let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_javascript_jslint_conf = "--on --plusplus"
+
+" PHP
+let g:syntastic_php_checkers = ['php', 'phpmd']
+
+" Python
+let g:syntastic_python_checkers = ['python', 'flake8']
