@@ -2,6 +2,7 @@
 
 " Use Pathogen to load plugins dynamically,
 " management is done using git
+runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 " Ensure compatible shell,
