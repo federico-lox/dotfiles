@@ -157,3 +157,10 @@ set hlsearch
 set incsearch
 
 
+" == Plugins ==
+
+
+" === Syntastic ===
+
+" JSlint options
+let g:syntastic_javascript_jslint_conf = "--on --plusplus"
