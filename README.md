@@ -1,4 +1,6 @@
-= Configuration for Bash and Vim =
+Configuration for Bash and Vim
+==============================
+
 Hello traveller,
 you've reached the home of my personal *Bash* and *Vim* setup.
 
