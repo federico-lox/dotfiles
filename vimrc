@@ -18,8 +18,7 @@ set nocompatible
 " ==== UI ====
 
 " colors
-set background=light
-colorscheme solarized
+colorscheme molokai
 
 if !has("gui_running")
 	set  t_Co=256
