@@ -14,3 +14,6 @@ vim/undo/*
 !vim/undo/README.md
 vim/swap/*
 !vim/swap/README.md
+
+# Ignore netrw files
+vim/.netrw*
