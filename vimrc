@@ -16,11 +16,12 @@ set nocompatible
 
 " Enable filetype detection, filetype
 " plugins and indent files
-filetype plugin indent on
+if has("autocmd")
+	filetype plugin indent on
+endif
 
 
 " == UI ==
-
 
 " === Colors ===
 
@@ -46,13 +47,13 @@ if has("gui_running")
 		if has("gui_gtk") || has("gui_gtk2")
 			set guifont=Ubuntu\ Mono\ 13
 		else
-			set guifont=Ubuntu\ Mono:h13
+			set guifont=Ubuntu\ Mono:h18
 		endif
 	endif
 endif
 
 " Line spacing
-set linespace=3
+set linespace=8
 
 
 " === Highlighting ===
@@ -61,11 +62,16 @@ set linespace=3
 syntax on
 
 " Highlight current line
-set cursorline
+" set cursorline
 
-" Huighliht matching brackets
+" Highliht matching brackets
 set showmatch
 
+" Highlight the current line when insert
+" mode is activated
+if has("autocmd")
+	autocmd InsertEnter,InsertLeave * set cul!
+endif
 
 " === Elements ===
 
@@ -85,9 +91,15 @@ if has("gui_running")
 	set guioptions-=L
 endif
 
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+
+" Set the command window height to 2 lines, to avoid many cases of having to
+" "press <Enter> to continue"
+set cmdheight=2
+
 
 " == Editing ==
-
 
 " === Input ===
 
@@ -115,6 +127,10 @@ else
 	set clipboard=unnamedplus
 endif
 
+" Instead of failing a command because of unsaved changes, instead raise a
+" dialogue asking if you wish to save changed files.
+set confirm
+
 
 " === Indentation ===
 
@@ -127,6 +143,30 @@ set noexpandtab " Don't use spaces
 " Inherit indentation from previous line
 set autoindent
 
+
+" === View ===
+
+" Make sure the last line is displayed
+" in its full length despite soft wrapping
+set display+=lastline
+
+" Keep 3 showing three lines of padding
+" when scrolling down/up after/before the current line
+if !&scrolloff
+	set scrolloff=5
+endif
+
+" Keep showing 5 columns of padding
+" when scrolling right/left after/before the current column
+if !&sidescrolloff
+	set sidescrolloff=5
+endif
+
+" Show trailing spaces
+set listchars="trail:."
+if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+	let &listchars = "trail:\u2423"
+endif
 
 " === Files ===
 
@@ -153,12 +193,39 @@ set smartcase
 " Highlight results
 set hlsearch
 
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+	nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+endif
+
 " Incremental search
 set incsearch
 
 
-" == Plugins ==
+" === Backup, Undo, Swap ===
 
+let s:dir = has('win16') || has("win32") || has("win64") ? '~/_vim' : '~/.vim'
+
+if isdirectory(expand(s:dir))
+	if &directory =~# '^\.,'
+		let &directory = expand(s:dir) . '/swap//,' . &directory
+	endif
+
+	if &backupdir =~# '^\.,'
+		let &backupdir = expand(s:dir) . '/backup//,' . &backupdir
+	endif
+
+	if exists('+undodir') && &undodir =~# '^\.\%(,\|$\)'
+		let &undodir = expand(s:dir) . '/undo//,' . &undodir
+	endif
+endif
+
+if exists('+undofile')
+  set undofile
+endif
+
+
+" == Plugins ==
 
 " === Syntastic ===
 
@@ -171,3 +238,11 @@ let g:syntastic_php_checkers = ['php', 'phpmd']
 
 " Python
 let g:syntastic_python_checkers = ['python', 'flake8']
+
+
+" === Matchit ===
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+	runtime! macros/matchit.vim
+endif
