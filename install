@@ -1,0 +1,46 @@
+#!/bin/sh
+
+#get the script's full path
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+#vimrc
+if [ -f ~/.vimrc ]; then 
+	echo "A Vim resource file already exists, backing it up..."
+	mv ~/.vimrc ~/.vimrc.bkp
+	echo "The file was backed up as ~/.vimrc.bkp"
+	echo
+fi
+
+ln -s $DIR/vimrc ~/.vimrc
+	
+#vim dir
+if [ -d ~/.vim ]; then
+	echo "The Vim folder already exists, backing it up..."
+	mv ~/.vim ~/.vim_bkp
+	echo "The folder was backed up as ~/.vim_bkp"
+	echo
+fi
+
+ln -s $DIR/vim ~/.vim
+
+#bash
+if [ -f ~/.bash_profile ]; then
+	echo "The Bash resource file already exists, backing it up..."
+	mv ~/.bash_profile ~/.bash_profile.bkp
+	echo "The file was backed up as ~/.bash_profile.bkp"
+	echo
+fi
+
+ln -s $DIR/bashrc ~/.bash_profile
+
+#git submodules
+echo "Setting up and fetching Pathogen bundles..."
+git submodule init
+git submodule update
+echo
+
+echo "Done, please log out and then back in to make the changes"
+echo "to bash effective on Linux, or close and re-open the"
+echo "terminal application."
+echo
+
