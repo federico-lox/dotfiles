@@ -75,6 +75,15 @@ endif
 
 " === Elements ===
 
+" Show line, column and percentage of scroll in status line
+set ruler
+
+" Show the name of the mode at the commandline
+set showmode
+
+" show the 80-chars guide with a different background
+set colorcolumn=80
+
 " Show line numbers in the gutter
 set number
 
