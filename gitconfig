@@ -1,0 +1,37 @@
+[user]
+	name = Federico 'Lox' Lucignano
+	email = federico@wikia-inc.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	mg = merge --no-ff
+	pl = pull --rebase
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[push]
+	default = upstream
+
+[branch]
+	autosetuprebase = always
+
+[merge]
+	ff = false
+	tool = vimdiff
+
+[core]
+	gitproxy = gitproxy
+	editor = vim
+
+[credential]
+	helper = cache
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false

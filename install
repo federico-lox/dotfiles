@@ -33,6 +33,16 @@ fi
 
 ln -s $DIR/bashrc ~/.bash_profile
 
+#git config
+if [ -f ~/.gitconfig ]; then
+        echo "Git's global config file already exists, backing it up..."
+        mv ~/.gitconfig ~/.gitconfig.bkp
+        echo "The file was backed up as ~/.gitconfig.bkp"
+        echo
+fi
+
+ln -s $DIR/gitconfig ~/.gitconfig
+
 #git submodules
 echo "Setting up and fetching Pathogen bundles..."
 git submodule init
