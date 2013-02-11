@@ -82,7 +82,9 @@ set ruler
 set showmode
 
 " show the 80-chars guide with a different background
-set colorcolumn=80
+if exists("&colorcolumn")
+	set colorcolumn=80
+endif
 
 " Show line numbers in the gutter
 set number
