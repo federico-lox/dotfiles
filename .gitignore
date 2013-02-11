@@ -1,6 +1,11 @@
 # Ignore Mac junky files
 .DS_Store
 
+# Ignore Vim swap files, those might be
+# created by a vanilla setuo when editing
+# the resource file
+*.swp
+
 # Ignore the backup, swap and undo folders' content
 # but track the README's to allow keeping the directories
 vim/backup/*
@@ -9,4 +14,3 @@ vim/undo/*
 !vim/undo/README.md
 vim/swap/*
 !vim/swap/README.md
-
