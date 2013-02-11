@@ -26,7 +26,6 @@
 	tool = vimdiff
 
 [core]
-	gitproxy = gitproxy
 	editor = vim
 
 [credential]
