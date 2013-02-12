@@ -1,5 +1,17 @@
 #!/bin/sh
 
+#download Pathogen bundles
+echo "Installing Vim plugins..."
+echo
+git submodule init
+git submodule update
+echo
+echo "Done."
+echo
+
+echo "Linking configuration files..."
+echo
+
 #get the script's full path
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -31,7 +43,7 @@ if [ -f ~/.bash_profile ]; then
 	echo
 fi
 
-ln -s $DIR/bashrc ~/.bash_profile
+ln -s $DIR/bash_profile ~/.bash_profile
 
 #git config
 if [ -f ~/.gitconfig ]; then
@@ -42,12 +54,6 @@ if [ -f ~/.gitconfig ]; then
 fi
 
 ln -s $DIR/gitconfig ~/.gitconfig
-
-#git submodules
-echo "Setting up and fetching Pathogen bundles..."
-git submodule init
-git submodule update
-echo
 
 echo "Done, please log out and then back in to make the changes"
 echo "to bash effective on Linux, or close and re-open the"
