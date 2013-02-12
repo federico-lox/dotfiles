@@ -1,4 +1,6 @@
 #!/bin/sh
+#get the script's full path
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #download Pathogen bundles
 echo "Installing Vim plugins..."
@@ -11,9 +13,6 @@ echo
 
 echo "Linking configuration files..."
 echo
-
-#get the script's full path
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #vimrc
 if [ -f ~/.vimrc ]; then 
