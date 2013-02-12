@@ -10,13 +10,7 @@ if ! shopt -oq posix; then
         fi
 fi
 
-# Add executable gems to PATH
-if [ -d $HOME/.rvm/bin ]; then
-	# Add RVM to PATH for scripting
-	PATH=$PATH:$HOME/.rvm/bin
-fi
-
-# Customize prompt with git info
+#Customize prompt with git info
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
