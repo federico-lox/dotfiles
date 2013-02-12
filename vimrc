@@ -198,7 +198,10 @@ set autoread
 
 " == Search ==
 
-" Be smart about case
+" Be smart about case,
+" i.e. use case sensitiveness only if
+" there's a uppercase letter in the pattern
+set ignorecase
 set smartcase
 
 " Highlight results
