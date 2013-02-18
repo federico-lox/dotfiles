@@ -263,8 +263,8 @@ endif
 
 " === CtrlP ===
 
-" ignore unwanted files/dirs
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll|tmp|swp|bak|zip|rar|7z|tar|gz|bz2|bin|jar|pyc|la|png|bmp|gif|jpg|dex)$',
-	\ }
+" increase maximum amount of files
+let g:ctrlp_max_files = 30000
+
+" maximum number of matches to show
+let g:ctrlp_max_height = 15
