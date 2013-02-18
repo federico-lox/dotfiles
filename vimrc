@@ -260,3 +260,11 @@ let g:syntastic_python_checkers = ['python', 'flake8']
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 	runtime! macros/matchit.vim
 endif
+
+" === CtrlP ===
+
+" ignore unwanted files/dirs
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	\ 'file': '\v\.(exe|so|dll|tmp|swp|bak|zip|rar|7z|tar|gz|bz2|bin|jar|pyc|la|png|bmp|gif|jpg|dex)$',
+	\ }
