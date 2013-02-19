@@ -257,6 +257,11 @@ endif
 
 " == Plugins ==
 
+" === Netrw ===
+
+" open previews in a vertical split
+let g:netrw_preview = 1
+
 " === Syntastic ===
 
 " Javascript
