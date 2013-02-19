@@ -15,13 +15,14 @@ filetype off " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-
-" Other bundles
 " Using git long URL's to avoid defaulting to http
 " which is being blocked in some corporate
 " environments
+
+" let Vundle manage Vundle
+Bundle 'git@github.com:gmarik/vundle'
+
+" Other bundles
 Bundle 'git@github.com:mileszs/ack.vim'
 Bundle 'git@github.com:kien/ctrlp.vim'
 Bundle 'git@github.com:Raimondi/delimitMate'
