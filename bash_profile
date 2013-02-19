@@ -14,16 +14,16 @@ fi
 function _git_prompt() {
     local git_status="`git status -unormal 2>&1`"
     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
-        if [[ "$git_status" =~ nothing\ to\ commit ]]; then
-            local ansi=32
-        elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
+        if [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
             local ansi=31
 	elif [[ "$git_status" =~ Changes\ not\ staged\ for\ commit ]]; then
-	    local ansi=36
+	    local ansi=33
 	elif [[ "$git_status" =~ Changes\ to\ be\ committed ]]; then
-	    local ansy=34
+	    local ansi=32
 	elif [[ "$git_status" =~ Your\ branch\ is\ ahead\ of ]]; then
-	    local ansi=30
+	    local ansi=34
+	elif [[ "$git_status" =~ nothing\ to\ commit ]]; then
+	    local ansi=35
         else
             local ansi=33
         fi
