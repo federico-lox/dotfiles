@@ -19,12 +19,15 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Other bundles
-Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'tomasr/molokai'
-Bundle 'msanders/snipmate.vim'
-Bundle 'scrooloose/syntastic'
+" Using git long URL's to avoid defaulting to http
+" which is being blocked in some corporate
+" environments
+Bundle 'git@github.com:mileszs/ack.vim'
+Bundle 'git@github.com:kien/ctrlp.vim'
+Bundle 'git@github.com:Raimondi/delimitMate'
+Bundle 'git@github.com:tomasr/molokai'
+Bundle 'git@github.com:msanders/snipmate.vim'
+Bundle 'git@github.com:scrooloose/syntastic'
 
 " Enable filetype detection, filetype
 " plugins and indent files
