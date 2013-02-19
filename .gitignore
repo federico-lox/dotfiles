@@ -8,6 +8,8 @@
 
 # Ignore the backup, swap and undo folders' content
 # but track the README's to allow keeping the directories
+vim/bundle/*
+!vim/bundle/README.md
 vim/backup/*
 !vim/backup/README.md
 vim/undo/*

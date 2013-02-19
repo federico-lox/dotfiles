@@ -3,10 +3,9 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #download Pathogen bundles
-echo "Installing Vim plugins..."
+echo "Installing Vundle..."
 echo
-git submodule init
-git submodule update
+git clone https://github.com/gmarik/vundle.git $DIR/vim/bundle/vundle
 echo
 echo "Done."
 echo
@@ -53,6 +52,11 @@ if [ -f ~/.gitconfig ]; then
 fi
 
 ln -s $DIR/gitconfig ~/.gitconfig
+
+echo "Installing Vim plugins..."
+echo
+vim +BundleInstall +qall
+echo
 
 echo "Done, please log out and then back in to make the changes"
 echo "to bash effective on Linux, or close and re-open the"

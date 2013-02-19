@@ -1,10 +1,5 @@
 " == Environment ==
 
-" Use Pathogen to load plugins dynamically,
-" management is done using git
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-
 " Ensure compatible shell,
 " on some machines I use zsh or fish and
 " it creates issues at times
@@ -13,6 +8,23 @@ set shell=/bin/bash
 " Disable Vi legacy support,
 " because I like to be Very IMproved ;)
 set nocompatible
+
+" Package management with Vundle
+filetype off " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" Other bundles
+Bundle 'mileszs/ack.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'tomasr/molokai'
+Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/syntastic'
 
 " Enable filetype detection, filetype
 " plugins and indent files
