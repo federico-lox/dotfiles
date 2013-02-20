@@ -10,8 +10,18 @@ echo
 echo "Done."
 echo
 
-echo "Linking configuration files..."
+echo "Linking directories and configuration files..."
 echo
+
+#bin
+if [ -f ~/.bin ]; then 
+	echo "A binaries directory already exists, backing it up..."
+	mv ~/.bin ~/.bin.bkp
+	echo "The directory was backed up as ~/.bin.bkp"
+	echo
+fi
+
+ln -s $DIR/bin ~/.bin
 
 #vimrc
 if [ -f ~/.vimrc ]; then 
@@ -25,9 +35,9 @@ ln -s $DIR/vimrc ~/.vimrc
 	
 #vim dir
 if [ -d ~/.vim ]; then
-	echo "The Vim folder already exists, backing it up..."
+	echo "The Vim directory already exists, backing it up..."
 	mv ~/.vim ~/.vim_bkp
-	echo "The folder was backed up as ~/.vim_bkp"
+	echo "The directory was backed up as ~/.vim_bkp"
 	echo
 fi
 

@@ -46,3 +46,6 @@ function _prompt_command() {
 }
 
 PROMPT_COMMAND=_prompt_command
+
+# Adding binaries directory to the path
+PATH=$PATH:$HOME/.bin
