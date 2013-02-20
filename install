@@ -16,8 +16,8 @@ echo
 #bin
 if [ -d $HOME/.bin ]; then 
 	echo "A binaries directory already exists, backing it up..."
-	mv $HOME/.bin $HOME/.bin.bkp
-	echo "The directory was backed up as $HOME/.bin.bkp"
+	mv $HOME/.bin $HOME/.bin_bkp
+	echo "The directory was backed up as $HOME/.bin_bkp"
 	echo
 fi
 
