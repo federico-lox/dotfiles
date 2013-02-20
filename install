@@ -71,7 +71,7 @@ if [ -d $HOME/.vim ]; then
 	echo
 fi
 
-ln -s $DIR/im $HOME/.vim
+ln -s $DIR/vim $HOME/.vim
 
 # Vim plugins
 echo "Installing Vim plugins..."
