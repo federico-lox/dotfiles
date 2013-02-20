@@ -139,6 +139,9 @@ set backspace=indent,eol,start
 set wildmenu
 set wildmode=list:longest,full
 
+" Enable omnicompletion for syntax
+set ofu=syntaxcomplete#Complete
+
 " Enable mouse in terminal UI
 set mouse=a
 
