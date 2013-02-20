@@ -2,7 +2,7 @@
 #get the script's full path
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-#download Pathogen bundles
+# Vundle
 echo "Installing Vundle..."
 echo
 git clone git@github.com:gmarik/vundle.git $DIR/vim/bundle/vundle
@@ -14,65 +14,66 @@ echo "Linking directories and configuration files..."
 echo
 
 #bin
-if [ -f ~/.bin ]; then 
+if [ -d $HOME/.bin ]; then 
 	echo "A binaries directory already exists, backing it up..."
-	mv ~/.bin ~/.bin.bkp
-	echo "The directory was backed up as ~/.bin.bkp"
+	mv $HOME/.bin $HOME/.bin.bkp
+	echo "The directory was backed up as $HOME/.bin.bkp"
 	echo
 fi
 
-ln -s $DIR/bin ~/.bin
-
-#vimrc
-if [ -f ~/.vimrc ]; then 
-	echo "A Vim resource file already exists, backing it up..."
-	mv ~/.vimrc ~/.vimrc.bkp
-	echo "The file was backed up as ~/.vimrc.bkp"
-	echo
-fi
-
-ln -s $DIR/vimrc ~/.vimrc
-	
-#vim dir
-if [ -d ~/.vim ]; then
-	echo "The Vim directory already exists, backing it up..."
-	mv ~/.vim ~/.vim_bkp
-	echo "The directory was backed up as ~/.vim_bkp"
-	echo
-fi
-
-ln -s $DIR/vim ~/.vim
+ln -s $DIR/bin $HOME/.bin
 
 #bash
-if [ -f ~/.bash_profile ]; then
+if [ -f $HOME/.bash_profile ]; then
 	echo "The Bash resource file already exists, backing it up..."
-	mv ~/.bash_profile ~/.bash_profile.bkp
-	echo "The file was backed up as ~/.bash_profile.bkp"
+	mv $HOME/.bash_profile $HOME/.bash_profile.bkp
+	echo "The file was backed up as $HOME/.bash_profile.bkp"
 	echo
 fi
 
-ln -s $DIR/bash_profile ~/.bash_profile
+ln -s $DIR/bash_profile $HOME/.bash_profile
 
 #git config
-if [ -f ~/.gitconfig ]; then
+if [ -f $HOME/.gitconfig ]; then
         echo "Git's global config file already exists, backing it up..."
-        mv ~/.gitconfig ~/.gitconfig.bkp
-        echo "The file was backed up as ~/.gitconfig.bkp"
+        mv $HOME/.gitconfig $HOME/.gitconfig.bkp
+        echo "The file was backed up as $HOME/.gitconfig.bkp"
         echo
 fi
 
-ln -s $DIR/gitconfig ~/.gitconfig
+ln -s $DIR/gitconfig $HOME/.gitconfig
 
 #git ignore
-if [ -f ~/.gitignore_global ]; then
+if [ -f $HOME/.gitignore_global ]; then
         echo "Git's global ignore file already exists, backing it up..."
-        mv ~/.gitignore_global ~/.gitignore_global.bkp
-        echo "The file was backed up as ~/.gitignore_global.bkp"
+        mv $HOME/.gitignore_global $HOME/.gitignore_global.bkp
+        echo "The file was backed up as $HOME/.gitignore_global.bkp"
         echo
 fi
 
-ln -s $DIR/gitignore ~/.gitignore_global
+ln -s $DIR/gitignore $HOME/.gitignore_global
 
+#vimrc
+if [ -f $HOME/.vimrc ]; then 
+	echo "A Vim resource file already exists, backing it up..."
+	mv $HOME/.vimrc $HOME/.vimrc.bkp
+	echo "The file was backed up as $HOME/.vimrc.bkp"
+	echo
+fi
+
+ln -s $DIR/vimrc $HOME/.vimrc
+	
+#vim dir
+if [ -d $HOME/.vim ]; then
+	echo "The Vim directory already exists, backing it up..."
+	mv $HOME/.vim $HOME/.vim_bkp
+	echo "The directory was backed up as $HOME/.vim_bkp"
+	echo
+fi
+
+ln -s $DIR/im $HOME/.vim
+
+# Vim plugins
 echo "Installing Vim plugins..."
 echo
 vim +BundleInstall +qall
