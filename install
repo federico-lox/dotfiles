@@ -63,6 +63,16 @@ fi
 
 ln -s $DIR/gitconfig ~/.gitconfig
 
+#git ignore
+if [ -f ~/.gitignore_global ]; then
+        echo "Git's global ignore file already exists, backing it up..."
+        mv ~/.gitignore_global ~/.gitignore_global.bkp
+        echo "The file was backed up as ~/.gitignore_global.bkp"
+        echo
+fi
+
+ln -s $DIR/gitignore ~/.gitignore_global
+
 echo "Installing Vim plugins..."
 echo
 vim +BundleInstall +qall
