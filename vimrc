@@ -143,6 +143,9 @@ set wildmode=list:longest,full
 " Enable omnicompletion for syntax
 set ofu=syntaxcomplete#Complete
 
+" Make the completion menu behave like in an IDE
+set completeopt=longest,menuone
+
 " Enable mouse in terminal UI
 set mouse=a
 
