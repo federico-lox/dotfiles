@@ -1,3 +1,5 @@
+" == Custom Functions ==
+
 " == Environment ==
 
 " Ensure compatible shell,
@@ -153,9 +155,8 @@ set mouse=a
 set mousehide
 set mousemodel=popup
 
-" Use host clipboard
-" by default
-if has('win16') || has('win32') || has('win64')
+" Use global cut buffer (aka clipboard)
+if has('win16') || has('win32') || has('win64') || system('uname')=~'Darwin'
 	set clipboard=unnamed
 else
 	set clipboard=unnamedplus
