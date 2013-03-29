@@ -49,3 +49,8 @@ PROMPT_COMMAND=_prompt_command
 
 # Adding binaries directory to the path
 PATH=$PATH:$HOME/.bin
+
+# Binary folder for tools installed in the Home folder
+if [ -d $HOME/bin ]; then
+	PATH=$PATH:$HOME/bin
+fi
