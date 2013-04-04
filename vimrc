@@ -32,6 +32,7 @@ Bundle 'git@github.com:tomasr/molokai'
 Bundle 'git@github.com:msanders/snipmate.vim'
 Bundle 'git@github.com:scrooloose/syntastic'
 Bundle 'git@github.com:majutsushi/tagbar'
+Bundle 'git@github.com:juvenn/mustache.vim'
 
 " Enable filetype detection, filetype
 " plugins and indent files
