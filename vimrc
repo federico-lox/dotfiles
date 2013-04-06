@@ -267,8 +267,8 @@ endif
 " == File type settings ==
 
 if has("autocmd")
-	autocmd FileType ruby setlocal expandtab tabstop=2 shiftwidth=2
-	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
+	autocmd FileType ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 	autocmd FileType php setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 	autocmd FileType javascript setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 end
