@@ -7,13 +7,7 @@ set nocompatible
 " Package management with Vundle
 filetype off " required!
 
-
-if has("win16") || has("win32") || has("win64")
-	set rtp+=~/vimfiles/bundle/vundle/
-else
-	set rtp+=~/.vim/bundle/vundle/
-endif
-
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Using git long URL's to avoid defaulting to http
@@ -48,11 +42,6 @@ endif
 " Scheme
 colorscheme molokai
 
-" Ensure the terminal UI uses the correct palette
-" if !has("gui_running")
-" 	set  t_Co=256
-" endif
-
 
 " === Typography ===
 
@@ -61,7 +50,7 @@ if has("gui_running")
 	" Detect the platform and set the font
 	" accordingly
 	if has("win16") || has("win32") || has("win64")
-		set guifont=Consolas:h13
+		set guifont=Consolas:h11
 	elseif has("unix")
 		if has("gui_gtk") || has("gui_gtk2")
 			set guifont=Ubuntu\ Mono\ 13
@@ -246,7 +235,7 @@ set incsearch
 
 " === Backup, Undo, Swap ===
 
-let s:dir = has('win16') || has("win32") || has("win64") ? '~/vimfiles' : '~/.vim'
+let s:dir = '~/.vim'
 
 if isdirectory(expand(s:dir))
 	if &directory =~# '^\.,'
