@@ -1,9 +1,0 @@
-#!/bin/sh
-#get the script's full path
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-echo "Updating Vim bundles..."
-echo "Launching Vundle..."
-vim +BundleUpdate +qall
-echo "Done."
-echo
