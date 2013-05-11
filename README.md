@@ -40,3 +40,11 @@ ln -s "`pwd`"/vim ~/vimfiles
 
 vim +BundleInstall +qall
 ```
+
+UPDATE
+------
+
+To keep the Vim plugins up-to-date just run:
+```bash
+vim +BundleUpdate +qall
+```
