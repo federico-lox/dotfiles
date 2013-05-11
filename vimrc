@@ -50,9 +50,9 @@ endif
 colorscheme molokai
 
 " Ensure the terminal UI uses the correct palette
-if !has("gui_running")
-	set  t_Co=256
-endif
+" if !has("gui_running")
+" 	set  t_Co=256
+" endif
 
 
 " === Typography ===
