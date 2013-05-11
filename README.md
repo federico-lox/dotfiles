@@ -26,17 +26,18 @@ ln -s "`pwd`"/bash_profile ~/.bash_profile
 
 __Vim__
 ```bash
-git clone git@github.com:gmarik/vundle.git vim/bundle/vundle
-
 # Unix
 ln -s "`pwd`"/vimrc ~/.vimrc
 # Windows
 ln -s "`pwd`"/vimrc ~/_vimrc
 
 # Unix
+git clone git@github.com:gmarik/vundle.git vim/bundle/vundle
 ln -s "`pwd`"/vim ~/.vim
 # Windows
-ln -s "`pwd`"/vim ~/vimfiles
+cp -R "`pwd`"/vim ~/.vim
+cd ~/.vim
+git clone git@github.com:gmarik/vundle.git vim/bundle/vundle
 
 vim +BundleInstall +qall
 ```
