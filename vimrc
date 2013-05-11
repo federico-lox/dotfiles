@@ -1,11 +1,4 @@
-" == Custom Functions ==
-
 " == Environment ==
-
-" Ensure compatible shell,
-" on some machines I use zsh or fish and
-" it creates issues at times
-set shell=/bin/bash
 
 " Disable Vi legacy support,
 " because I like to be Very IMproved ;)
@@ -14,7 +7,13 @@ set nocompatible
 " Package management with Vundle
 filetype off " required!
 
-set rtp+=~/.vim/bundle/vundle/
+
+if has("win16") || has("win32") || has("win64")
+	set rtp+=~/vimfiles/bundle/vundle/
+else
+	set rtp+=~/.vim/bundle/vundle/
+endif
+
 call vundle#rc()
 
 " Using git long URL's to avoid defaulting to http
@@ -61,14 +60,13 @@ colorscheme molokai
 if has("gui_running")
 	" Detect the platform and set the font
 	" accordingly
-	" tip: the Ubuntu Mono font is in the res folder
 	if has("win16") || has("win32") || has("win64")
-		set guifont=Ubuntu_Mono:h13
+		set guifont=Consolas:h13
 	elseif has("unix")
 		if has("gui_gtk") || has("gui_gtk2")
 			set guifont=Ubuntu\ Mono\ 13
 		else
-			set guifont=Ubuntu\ Mono:h18
+			set guifont=Monaco:h18
 		endif
 	endif
 endif
@@ -211,7 +209,11 @@ endif
 set encoding=utf8
 
 " Default line ending
-set fileformat=unix
+if has('win16') || has('win32') || has('win64')
+	set fileformat=dos	
+else
+	set fileformat=unix
+endif
 
 " Detection of line ending
 " when opening files
@@ -244,7 +246,7 @@ set incsearch
 
 " === Backup, Undo, Swap ===
 
-let s:dir = has('win16') || has("win32") || has("win64") ? '~/_vim' : '~/.vim'
+let s:dir = has('win16') || has("win32") || has("win64") ? '~/vimfiles' : '~/.vim'
 
 if isdirectory(expand(s:dir))
 	if &directory =~# '^\.,'
