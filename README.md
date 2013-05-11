@@ -16,12 +16,12 @@ Run the following commands:
 __Git__
 ```bash
 ln -s "`pwd`"/gitconfig ~/.gitconfig
-ln -s "`pwd`"/gitignore ~/.gitignore\_global
+ln -s "`pwd`"/gitignore ~/.gitignore_global
 ```
 
 __Bash__
 ```bash
-ln -s "`pwd`"/bash\_profile ~/.bash\_profile
+ln -s "`pwd`"/bash_profile ~/.bash_profile
 ```
 
 __Vim__
@@ -31,8 +31,12 @@ git clone git@github.com:gmarik/vundle.git vim/bundle/vundle
 # Unix
 ln -s "`pwd`"/vimrc ~/.vimrc
 # Windows
-ln -s "`pwd`"/vimrc $HOME/\_vimrc
+ln -s "`pwd`"/vimrc ~/_vimrc
 
-ln -s "`pwd`"/vim $HOME/.vim
+# Unix
+ln -s "`pwd`"/vim ~/.vim
+# Windows
+ln -s "`pwd`"/vim ~/vimfiles
+
 vim +BundleInstall +qall
 ```
