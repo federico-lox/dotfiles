@@ -14,14 +14,25 @@ SETUP
 Run the following commands:
 
 __Git__
-* ln -s "`pwd`"/gitconfig ~/.gitconfig
-* ln -s "`pwd`"/gitignore ~/.gitignore\_global
+```bash
+ln -s "`pwd`"/gitconfig ~/.gitconfig
+ln -s "`pwd`"/gitignore ~/.gitignore\_global
+```
 
 __Bash__
-* ln -s "`pwd`"/bash\_profile ~/.bash\_profile
+```bash
+ln -s "`pwd`"/bash\_profile ~/.bash\_profile
+```
 
 __Vim__
-* git clone git@github.com:gmarik/vundle.git vim/bundle/vundle
-* (Unix) ln -s "`pwd`"/vimrc ~/.vimrc or (Win) ln -s "`pwd`"/vimrc $HOME/\_vimrc
-* ln -s "`pwd`"/vim $HOME/.vim
-* vim +BundleInstall +qall
+```bash
+git clone git@github.com:gmarik/vundle.git vim/bundle/vundle
+
+# Unix
+ln -s "`pwd`"/vimrc ~/.vimrc
+# Windows
+ln -s "`pwd`"/vimrc $HOME/\_vimrc
+
+ln -s "`pwd`"/vim $HOME/.vim
+vim +BundleInstall +qall
+```
