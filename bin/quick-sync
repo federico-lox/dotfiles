@@ -1,0 +1,10 @@
+#! /bin/sh
+
+#Unison helper
+#assumes there's a .prf configuration file in ~/.unison with the same name
+#of the current directory, one way sync.
+
+SYNCROOT=`pwd`
+PROFILE=${SYNCROOT##/*/}
+
+unison $PROFILE -batch -force "$SYNCROOT"
