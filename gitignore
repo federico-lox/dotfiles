@@ -1,16 +1,18 @@
-# OS generated files
+/.komodotools
+/mediawiki-1.19.komodoproject
+/nbproject
+/.project
+/.settings
+/wikia-trunk.komodoproject
+/Wikia (trunk).esproj
+/.tags
+/.tags_sorted_by_file
+/mysql-connector-java-5.1.18-bin.jar
+/mysql-connector-license.txt
+.idea
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-Icon?
-ehthumbs.db
-Thumbs.db
-*~
-
-# Ctags (only in root level)
-/tags
-
-# Vim swap files
-*.swp
+.buildpath
+sftp-config.json
+*.iml
+/build
+/LocalSettings.php
