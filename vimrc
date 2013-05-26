@@ -43,6 +43,9 @@ endif
 if has("gui_running")
 	set background=light
 	colorscheme solarized
+else
+	set background=dark
+	colorscheme elflord
 endif
 
 " === Typography ===
@@ -79,7 +82,7 @@ set showmatch
 
 " Highlight the current line when insert
 " mode is activated
-if has("autocmd")
+if has("autocmd") && has("gui_running")
 	autocmd InsertEnter,InsertLeave * set cul!
 endif
 
