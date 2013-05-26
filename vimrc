@@ -22,6 +22,7 @@ Bundle 'git@github.com:mileszs/ack.vim'
 Bundle 'git@github.com:kien/ctrlp.vim'
 Bundle 'git@github.com:Raimondi/delimitMate'
 Bundle 'git@github.com:tomasr/molokai'
+Bundle 'git@github.com:altercation/vim-colors-solarized'
 Bundle 'git@github.com:msanders/snipmate.vim'
 Bundle 'git@github.com:scrooloose/syntastic'
 Bundle 'git@github.com:majutsushi/tagbar'
@@ -38,10 +39,11 @@ endif
 " == UI ==
 
 " === Colors ===
-
 " Scheme
-colorscheme molokai
-
+if has("gui_running")
+	set background=light
+	colorscheme solarized
+endif
 
 " === Typography ===
 
