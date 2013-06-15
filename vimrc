@@ -109,6 +109,9 @@ set number
 if has("gui_running")
 	" Remove Toolbar
 	set guioptions-=T
+
+	" Remove menubar
+	set guioptions-=m
 	
 	" Remove Scrollbars
 	set guioptions-=r
@@ -121,9 +124,9 @@ endif
 " Always display the status line, even if only one window is displayed
 set laststatus=2
 
-" Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
-set cmdheight=2
+" Ensure saving vertical space
+set cmdheight=1
+set shortmess=a
 
 
 " == Editing ==
@@ -135,6 +138,7 @@ set cmdheight=2
 set backspace=indent,eol,start
 
 " Tab triggers autocompletion in
+" y
 " the command line
 set wildmenu
 set wildmode=list:longest,full
@@ -144,6 +148,9 @@ set ofu=syntaxcomplete#Complete
 
 " Make the completion menu behave like in an IDE
 set completeopt=longest,menuone
+
+" Choose the lookup order for the tags file
+set tags=./tags,tags;
 
 " Enable mouse in terminal UI
 set mouse=a
@@ -163,6 +170,8 @@ endif
 " dialogue asking if you wish to save changed files.
 set confirm
 
+" Remap the leader key
+let mapleader=","
 
 " === Indentation ===
 
@@ -311,7 +320,9 @@ let g:ctrlp_max_height = 15
 
 " set the right find utility on Windows
 if has("win16") || has("win32") || has("win64")
-	let g:Grep_Find_Path='"c:\Program Files (x86)\Git\bin\find.exe"'
+	let g:Grep_Find_Path='"%USERPROFILE%\bin\find.exe"'
+	let g:Egrep_Path='"%USERPROFILE%\bin\egrep.exe"'
+	let g:Agrep_Path='"%USERPROFILE%\bin\agrep.exe"'
 endif
 
 " skip VCS dirs
@@ -320,3 +331,28 @@ let g:Grep_Skip_Dirs='.git .svn'
 " skip tag files
 let g:Grep_Skip_Files='tags'
 
+
+" == Custom functions and commands ==
+" go to the Projects dir
+function OpenProjects()
+	:cd ~\My\ Projects\
+	:e .
+endfunction
+command Projects :call OpenProjects()
+nmap <Leader>p :Projects<CR>
+
+" unison shortcut
+command QuickSync :execute '!sh \%USERPROFILE\%\bin\quick-sync'
+nmap <Leader>s :QuickSync<CR>
+
+" Toggle TagBar
+nmap <Leader>t :TagbarToggle<CR>
+
+" Find selection
+vmap <Leader>f y/<C-R>"<CR>
+
+" Find in files
+nmap <Leader>ff :Rgrep -i<CR>
+vmap <Leader>ff <Esc>:Rgrep<CR>
+nmap <Leader>fr :Egrep<CR>
+vmap <Leader>fr <Esc>:Egrep<CR>
