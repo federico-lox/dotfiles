@@ -18,17 +18,17 @@ call vundle#rc()
 Bundle 'git@github.com:gmarik/vundle'
 
 " Other bundles
-Bundle 'git@github.com:mileszs/ack.vim'
+Bundle 'git@github.com:vim-scripts/grep.vim'
 Bundle 'git@github.com:kien/ctrlp.vim'
 Bundle 'git@github.com:Raimondi/delimitMate'
-Bundle 'git@github.com:tomasr/molokai'
-Bundle 'git@github.com:altercation/vim-colors-solarized'
 Bundle 'git@github.com:msanders/snipmate.vim'
 Bundle 'git@github.com:scrooloose/syntastic'
 Bundle 'git@github.com:majutsushi/tagbar'
 Bundle 'git@github.com:juvenn/mustache.vim'
 Bundle 'git@github.com:derekwyatt/vim-scala'
 Bundle 'git@github.com:elzr/vim-json'
+Bundle 'git@github.com:altercation/vim-colors-solarized'
+Bundle 'git@github.com:tomasr/molokai'
 
 " Enable filetype detection, filetype
 " plugins and indent files
@@ -306,3 +306,17 @@ let g:ctrlp_max_files = 30000
 
 " maximum number of matches to show
 let g:ctrlp_max_height = 15
+
+" === grep.vim ===
+
+" set the right find utility on Windows
+if has("win16") || has("win32") || has("win64")
+	let g:Grep_Find_Path='"c:\Program Files (x86)\Git\bin\find.exe"'
+"	let g:Grep_Xargs_Path='"c:\Program Files (x86)\Git\bin\xargs.exe"'
+endif
+
+" skip VCS dirs
+let g:Grep_Skip_Dirs='.giv .svn'
+
+" skip tag files
+let g:Grep_Skip_Files='tags'
