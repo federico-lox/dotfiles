@@ -312,11 +312,11 @@ let g:ctrlp_max_height = 15
 " set the right find utility on Windows
 if has("win16") || has("win32") || has("win64")
 	let g:Grep_Find_Path='"c:\Program Files (x86)\Git\bin\find.exe"'
-"	let g:Grep_Xargs_Path='"c:\Program Files (x86)\Git\bin\xargs.exe"'
 endif
 
 " skip VCS dirs
-let g:Grep_Skip_Dirs='.giv .svn'
+let g:Grep_Skip_Dirs='.git .svn'
 
 " skip tag files
 let g:Grep_Skip_Files='tags'
+
