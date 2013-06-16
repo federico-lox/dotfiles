@@ -57,6 +57,9 @@ if has("gui_running")
 	" accordingly
 	if has("win16") || has("win32") || has("win64")
 		set guifont=Consolas:h11
+
+		" Maximize the window
+		au GUIEnter * simalt ~x
 	elseif has("unix")
 		if has("gui_gtk") || has("gui_gtk2")
 			set guifont=Ubuntu\ Mono\ 13
@@ -124,7 +127,8 @@ endif
 " Always display the status line, even if only one window is displayed
 set laststatus=2
 
-" Ensure saving vertical space
+" Set the command window height to 2 lines, to avoid many cases of having to
+" "press <Enter> to continue"
 set cmdheight=1
 set shortmess=a
 
@@ -356,3 +360,7 @@ nmap <Leader>ff :Rgrep -i<CR>
 vmap <Leader>ff <Esc>:Rgrep<CR>
 nmap <Leader>fr :Egrep<CR>
 vmap <Leader>fr <Esc>:Egrep<CR>
+
+" Faster vimgrep
+nnoremap <Leader>v :noautocmd vimgrep //gj **/*<Bar>:cw<left><left><left><left><left><left><left><left><left><left><left><left>
+"<c-f>$Bhhi
