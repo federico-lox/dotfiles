@@ -29,6 +29,7 @@ Bundle 'git@github.com:derekwyatt/vim-scala'
 Bundle 'git@github.com:elzr/vim-json'
 Bundle 'git@github.com:altercation/vim-colors-solarized'
 Bundle 'git@github.com:tomasr/molokai'
+Bundle 'git@github.com:rking/ag.vim'
 
 " Enable filetype detection, filetype
 " plugins and indent files
