@@ -45,8 +45,9 @@ if has("gui_running")
 	set background=light
 	colorscheme solarized
 else
+	set t_Co=256
 	set background=dark
-	colorscheme elflord
+	colorscheme solarized
 endif
 
 " === Typography ===
@@ -88,7 +89,6 @@ set showmatch
 " mode is activated
 if has("autocmd")
 	autocmd InsertEnter,InsertLeave * set cul!
-	highlight CursorLine ctermbg=darkblue ctermfg=NONE
 endif
 
 " === Elements ===
@@ -102,7 +102,7 @@ set showmode
 " show the 80-chars guide with a different background
 if exists("&colorcolumn")
 	set colorcolumn=80
-	highlight ColorColumn ctermbg=darkblue
+"	highlight ColorColumn ctermbg=darkblue
 endif
 
 " Show line numbers in the gutter
