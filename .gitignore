@@ -19,3 +19,11 @@ vim/swap/*
 
 # Ignore netrw files
 vim/.netrw*
+
+#Emacs
+emacs/elpa
+emacs/auto-save-list
+emacs/*.dat
+emacs/*.bkp
+emacs/*.cache
+emacs/*.eld
