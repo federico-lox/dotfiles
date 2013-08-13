@@ -144,7 +144,7 @@
 (require 'recentf)
 (require 'recentf-ido)
 (recentf-mode 1)
-(setq recentf-max-menu-items 50)
+(setq recentf-max-menu-items 100)
 
 ;;;Projectile
 (require 'projectile)
@@ -202,3 +202,4 @@
 (global-set-key (kbd "M-p d") 'projectile-find-dir)
 (global-set-key (kbd "M-p p") 'projectile-switch-project)
 (global-set-key (kbd "M-p b") 'projectile-dired)
+(global-set-key (kbd "M-p r") 'projectile-recentf)
