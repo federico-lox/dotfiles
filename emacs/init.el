@@ -8,6 +8,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/packages")
 
+(when (eq system-type 'windows-nt)
+  (setq find-program "~/bin/find.exe"))
+
 ;;;; UI settings
 ;; set color scheme
 (load-theme 'deeper-blue t)
