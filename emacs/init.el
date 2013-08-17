@@ -95,15 +95,16 @@
 
 ;;;Indentation
 (define-key global-map (kbd "RET") 'newline-and-indent);auto-indent new lines
-
-(defun tabs-only ()
+(setq c-backspace-function 'backward-delete-char)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'c-basic-indent 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
+(defun default-indentation ()
   (setq indent-tabs-mode t)
-  (let ((my-tab-width 4))
-    (setq tab-width my-tab-width)
-    (setq c-basic-indent my-tab-width)))
-(add-hook 'php-mode-hook 'tabs-only)
-(add-hook 'js-mode-hook 'tabs-only)
-(add-hook 'html-mode-hook 'tabs-only)
+  (setq tab-width 4))
+(add-hook 'php-mode-hook 'default-indentation)
+(add-hook 'js-mode-hook 'default-indentation)
+(add-hook 'html-mode-hook 'default-indentation)
 
 ;;;; Auto completion
 ;;; Ido mode
@@ -168,7 +169,7 @@
 ;;; Buffer management
 (global-set-key (kbd "<C-tab>") 'switch-to-next-buffer)
 (global-set-key (kbd "<C-S-tab>") 'switch-to-prev-buffer)
-(global-set-key (kbd "C-q") 'kill-buffer-and-window)
+(global-set-key (kbd "C-k") 'kill-buffer-and-window)
 (global-set-key (kbd "C-o") 'find-file)
 
 ;;; Window management
