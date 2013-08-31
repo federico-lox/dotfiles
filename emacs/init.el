@@ -132,8 +132,19 @@
       '("~/.emacs.d/snippets")) ;"~/.emacs.d/elpa/yasnippet-20130722.1832/snippets"))
 (yas-global-mode 1)
 
-;;;Flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;;;Flymake
+(require 'flymake-php)
+  (add-hook 'php-mode-hook 'flymake-php-load)
+(require 'flymake-json)
+  (add-hook 'json-mode 'flymake-json-load)
+;  (add-hook 'js-mode-hook 'flymake-json-maybe-load)
+(require 'flymake-jshint)
+  (add-hook 'js-mode-hook 'flymake-jshint-load)
+(require 'flymake-shell)
+  (add-hook 'sh-set-shell-hook 'flymake-shell-load)
+(require 'flymake-python-pyflakes)
+  (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+(setq flymake-python-pyflakes-executable "flake8")
 
 ;;;; Files and folders
 ;; Directory to use as the default
