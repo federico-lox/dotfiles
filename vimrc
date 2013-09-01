@@ -4,6 +4,13 @@
 " because I like to be Very IMproved ;)
 set nocompatible
 
+" Shell
+if has("win16") || has("win32") || has("win64")
+	set shell=bash.exe
+	set shellcmdflag=--login\ -c
+	set shellxquote=\"
+endif
+
 " Package management with Vundle
 filetype off " required!
 
@@ -116,7 +123,7 @@ if has("gui_running")
 
 	" Remove menubar
 	set guioptions-=m
-	
+
 	" Remove Scrollbars
 	set guioptions-=r
 	set guioptions-=l
@@ -221,7 +228,7 @@ set encoding=utf8
 
 " Default line ending
 if has('win16') || has('win32') || has('win64')
-	set fileformat=dos	
+	set fileformat=dos
 else
 	set fileformat=unix
 endif
