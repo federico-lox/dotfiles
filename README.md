@@ -2,7 +2,7 @@ Configuration for Bash and Vim
 ==============================
 
 Hello traveller,
-you've reached the home of my personal *Bash* and *Vim* setup.
+you've reached the home of my personal *Bash*, *Git*, *Emacs* and *Vim* setup.
 
 Feel free to grab anything you might find useful and don't be afraid to send questions over.
 
@@ -15,13 +15,28 @@ Run the following commands:
 
 __Git__
 ```bash
+#Unix
 ln -s "`pwd`"/gitconfig ~/.gitconfig
 ln -s "`pwd`"/gitignore ~/.gitignore_global
+#Windows
+mklink /H %USERPROFILE%\.gitconfig gitconfig
+mklink /H %USERPROFILE%\.gitignore_global gitignore
 ```
 
 __Bash__
 ```bash
+#Unix
 ln -s "`pwd`"/bash_profile ~/.bash_profile
+#Windows
+mklink /H %USERPROFILE%\.bash_profile bash_profile
+```
+
+__Emacs__
+```bash
+#Unix
+ln -s "`pwd`"/emacs ~/.emacs.d
+#Windows
+mklink /J %USERPROFILE%\.emacs.d emacs
 ```
 
 __Vim__
@@ -29,16 +44,14 @@ __Vim__
 # Unix
 ln -s "`pwd`"/vimrc ~/.vimrc
 # Windows
-ln -s "`pwd`"/vimrc ~/_vimrc
+mklink /H %USERPROFILE%\.vimrc vimrc
 
 # Unix
-git clone git@github.com:gmarik/vundle.git vim/bundle/vundle
 ln -s "`pwd`"/vim ~/.vim
 # Windows
-cp -R "`pwd`"/vim ~/.vim
-cd ~/.vim
+mklink /J %USERPROFILE%\.vim vim
+#both
 git clone git@github.com:gmarik/vundle.git vim/bundle/vundle
-
 vim +BundleInstall +qall
 ```
 
