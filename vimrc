@@ -6,6 +6,7 @@ set nocompatible
 
 " Shell
 if has("win16") || has("win32") || has("win64")
+	set shellslash
 	set shell=bash.exe
 	set shellcmdflag=--login\ -c
 	set shellxquote=\"
