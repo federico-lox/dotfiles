@@ -36,8 +36,9 @@ Bundle 'git@github.com:juvenn/mustache.vim'
 Bundle 'git@github.com:derekwyatt/vim-scala'
 Bundle 'git@github.com:elzr/vim-json'
 Bundle 'git@github.com:altercation/vim-colors-solarized'
-Bundle 'git@github.com:tomasr/molokai'
-Bundle 'git@github.com:rking/ag.vim'
+Bundle 'git@github.com:mileszs/ack.vim'
+" Bundle 'git@github.com:tomasr/molokai'
+" Bundle 'git@github.com:rking/ag.vim'
 
 " Enable filetype detection, filetype
 " plugins and indent files
@@ -51,12 +52,12 @@ endif
 " === Colors ===
 " Scheme
 if has("gui_running")
-	set background=light
+	set background=dark
 	colorscheme solarized
 else
 	set t_Co=256
 	set background=dark
-	colorscheme solarized
+	colorscheme elflord 
 endif
 
 " === Typography ===
