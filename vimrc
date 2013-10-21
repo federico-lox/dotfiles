@@ -333,31 +333,31 @@ let g:ctrlp_max_height = 15
 " === grep.vim ===
 
 " set the right find utility on Windows
-if has("win16") || has("win32") || has("win64")
-	let g:Grep_Find_Path='"%USERPROFILE%\bin\find.exe"'
-	let g:Egrep_Path='"%USERPROFILE%\bin\egrep.exe"'
-	let g:Agrep_Path='"%USERPROFILE%\bin\agrep.exe"'
-endif
+" if has("win16") || has("win32") || has("win64")
+	" let g:Grep_Find_Path='"%USERPROFILE%\bin\find.exe"'
+	" let g:Egrep_Path='"%USERPROFILE%\bin\egrep.exe"'
+	" let g:Agrep_Path='"%USERPROFILE%\bin\agrep.exe"'
+" endif
 
 " skip VCS dirs
-let g:Grep_Skip_Dirs='.git .svn'
+" let g:Grep_Skip_Dirs='.git .svn'
 
 " skip tag files
-let g:Grep_Skip_Files='tags'
+" let g:Grep_Skip_Files='tags'
 
 
 " == Custom functions and commands ==
 " go to the Projects dir
 function OpenProjects()
-	:cd ~\My\ Projects\
+	:cd ~\Projects\
 	:e .
 endfunction
 command Projects :call OpenProjects()
 nmap <Leader>p :Projects<CR>
 
 " unison shortcut
-command QuickSync :execute '!sh \%USERPROFILE\%\bin\quick-sync'
-nmap <Leader>s :QuickSync<CR>
+" command QuickSync :execute '!sh -c quick-sync'
+" nmap <Leader>s :QuickSync<CR>
 
 " Toggle TagBar
 nmap <Leader>t :TagbarToggle<CR>
@@ -366,10 +366,10 @@ nmap <Leader>t :TagbarToggle<CR>
 vmap <Leader>f y/<C-R>"<CR>
 
 " Find in files
-nmap <Leader>ff :Rgrep -i<CR>
-vmap <Leader>ff <Esc>:Rgrep<CR>
-nmap <Leader>fr :Egrep<CR>
-vmap <Leader>fr <Esc>:Egrep<CR>
+" nmap <Leader>ff :Rgrep -i<CR>
+" vmap <Leader>ff <Esc>:Rgrep<CR>
+" nmap <Leader>fr :Egrep<CR>
+" vmap <Leader>fr <Esc>:Egrep<CR>
 
 " Faster vimgrep
 nnoremap <Leader>v :noautocmd vimgrep //gj **/*<Bar>:cw<left><left><left><left><left><left><left><left><left><left><left><left>
