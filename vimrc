@@ -5,12 +5,12 @@
 set nocompatible
 
 " Shell
-if has("win16") || has("win32") || has("win64")
-	set shellslash
-	set shell=bash.exe
-	set shellcmdflag=--login\ -c
-	set shellxquote=\"
-endif
+"if has("win16") || has("win32") || has("win64")
+"	set shellslash
+"	set shell=bash.exe
+"	set shellcmdflag=--login\ -c
+"	set shellxquote=\"
+"endif
 
 " Package management with Vundle
 filetype off " required!
@@ -36,9 +36,9 @@ Bundle 'git@github.com:juvenn/mustache.vim'
 Bundle 'git@github.com:derekwyatt/vim-scala'
 Bundle 'git@github.com:elzr/vim-json'
 Bundle 'git@github.com:altercation/vim-colors-solarized'
-Bundle 'git@github.com:mileszs/ack.vim'
 " Bundle 'git@github.com:tomasr/molokai'
-" Bundle 'git@github.com:rking/ag.vim'
+Bundle 'git@github.com:rking/ag.vim'
+Bundle 'git@github.com:scrooloose/nerdtree'
 
 " Enable filetype detection, filetype
 " plugins and indent files
