@@ -39,6 +39,7 @@ Bundle 'git@github.com:altercation/vim-colors-solarized'
 " Bundle 'git@github.com:tomasr/molokai'
 Bundle 'git@github.com:rking/ag.vim'
 Bundle 'git@github.com:scrooloose/nerdtree'
+Bundle 'git@github.com:tpope/vim-fugitive'
 
 " Enable filetype detection, filetype
 " plugins and indent files
