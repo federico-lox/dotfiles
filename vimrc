@@ -92,6 +92,9 @@ syntax on
 " Highlight current line
 " set cursorline
 
+" Set current line colors
+hi CursorLine ctermbg=9 ctermfg=NONE
+
 " Highliht matching brackets
 set showmatch
 
@@ -100,6 +103,7 @@ set showmatch
 if has("autocmd")
 	autocmd InsertEnter,InsertLeave * set cul!
 endif
+
 
 " === Elements ===
 
