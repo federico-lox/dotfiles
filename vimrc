@@ -364,27 +364,27 @@ let g:ctrlp_max_height = 15
 " nmap <Leader>s :QuickSync<CR>
 
 " Toggle TagBar
-nnoremap <Leader>tagbar :TagbarToggle<CR>
+nnoremap <Leader>tb :TagbarToggle<CR>
 
 " Find selection
-vnoremap <Leader>findsel y/<C-R>"<CR>
+vnoremap <Leader>fs y/<C-R>"<CR>
 
 " Find in files
-" nmap <Leader>rgrep :Rgrep -i<CR>
-" vmap <Leader>rgrep <Esc>:Rgrep<CR>
-" nmap <Leader>egrep :Egrep<CR>
-" vmap <Leader>egrep <Esc>:Egrep<CR>
+" nmap <Leader>rg :Rgrep -i<CR>
+" vmap <Leader>rg <Esc>:Rgrep<CR>
+" nmap <Leader>eg :Egrep<CR>
+" vmap <Leader>eg <Esc>:Egrep<CR>
 
 " Faster vimgrep short command
-nnoremap <Leader>vimgrep :noautocmd vimgrep //gj **/*<Bar>:cw<left><left><left><left><left><left><left><left><left><left><left><left>
+nnoremap <Leader>v :noautocmd vimgrep //gj **/*<Bar>:cw<left><left><left><left><left><left><left><left><left><left><left><left>
 "<c-f>$Bhhi
 
 " CtrlP short commands
-nnoremap <Leader>buff :CtrlPBuffer<CR>
-nnoremap <Leader>file :CtrlP<CR>
-nnoremap <Leader>mru :CtrlPMRUFiles<CR>
-nnoremap <Leader>tags :CtrlPTag<CR>
-nnoremap <Leader>places :CtrlPBookmarkDir<CR>
+nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>f :CtrlP<CR>
+nnoremap <Leader>m :CtrlPMRUFiles<CR>
+nnoremap <Leader>t :CtrlPTag<CR>
+nnoremap <Leader>p :CtrlPBookmarkDir<CR>
 
 " NERDtree
-nnoremap <Leader>browse :NERDTree<CR>
+nnoremap <Leader>d :NERDTree<CR>
