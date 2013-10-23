@@ -93,11 +93,24 @@ syntax on
 " Highlight current line
 " set cursorline
 
-" Set current line colors
-hi CursorLine ctermbg=9 ctermfg=NONE
+" Set current line color, disable on terminal
+hi CursorLine ctermbg=Black ctermfg=NONE
 
 " Highliht matching brackets
 set showmatch
+
+" show the 80-chars guide with a different background
+" deprecated in favor of over-lenght highlight
+" if exists("&colorcolumn")
+" 	set colorcolumn=80
+"	highlight ColorColumn ctermbg=darkblue
+" endif
+
+" Highlight text beyond line lenght limit
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=DarkGrey guibg=#591A1A
+  autocmd BufEnter * match OverLength /\%80v.\+/
+augroup END
 
 " Highlight the current line when insert
 " mode is activated
@@ -113,12 +126,6 @@ set ruler
 
 " Show the name of the mode at the commandline
 set showmode
-
-" show the 80-chars guide with a different background
-if exists("&colorcolumn")
-	set colorcolumn=80
-"	highlight ColorColumn ctermbg=darkblue
-endif
 
 " Show line numbers in the gutter
 set number
@@ -310,14 +317,14 @@ let g:netrw_preview = 1
 " === Syntastic ===
 
 " Javascript
-let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_jslint_conf = "--on --plusplus"
 
 " PHP
-let g:syntastic_php_checkers = ['php', 'phpmd']
+let g:syntastic_php_checkers = ['php']
 
 " Python
-let g:syntastic_python_checkers = ['python', 'flake8']
+let g:syntastic_python_checkers = ['python', 'pylint']
 
 
 " === Matchit ===
@@ -352,30 +359,32 @@ let g:ctrlp_max_height = 15
 
 
 " == Custom functions and commands ==
-" go to the Projects dir
-function OpenProjects()
-	:cd ~\Projects\
-	:e .
-endfunction
-command Projects :call OpenProjects()
-nmap <Leader>p :Projects<CR>
-
 " unison shortcut
 " command QuickSync :execute '!sh -c quick-sync'
 " nmap <Leader>s :QuickSync<CR>
 
 " Toggle TagBar
-nmap <Leader>t :TagbarToggle<CR>
+nnoremap <Leader>tagbar :TagbarToggle<CR>
 
 " Find selection
-vmap <Leader>f y/<C-R>"<CR>
+vnoremap <Leader>findsel y/<C-R>"<CR>
 
 " Find in files
-" nmap <Leader>ff :Rgrep -i<CR>
-" vmap <Leader>ff <Esc>:Rgrep<CR>
-" nmap <Leader>fr :Egrep<CR>
-" vmap <Leader>fr <Esc>:Egrep<CR>
+" nmap <Leader>rgrep :Rgrep -i<CR>
+" vmap <Leader>rgrep <Esc>:Rgrep<CR>
+" nmap <Leader>egrep :Egrep<CR>
+" vmap <Leader>egrep <Esc>:Egrep<CR>
 
-" Faster vimgrep
-nnoremap <Leader>v :noautocmd vimgrep //gj **/*<Bar>:cw<left><left><left><left><left><left><left><left><left><left><left><left>
+" Faster vimgrep short command
+nnoremap <Leader>vimgrep :noautocmd vimgrep //gj **/*<Bar>:cw<left><left><left><left><left><left><left><left><left><left><left><left>
 "<c-f>$Bhhi
+
+" CtrlP short commands
+nnoremap <Leader>buff :CtrlPBuffer<CR>
+nnoremap <Leader>file :CtrlP<CR>
+nnoremap <Leader>mru :CtrlPMRUFiles<CR>
+nnoremap <Leader>tags :CtrlPTag<CR>
+nnoremap <Leader>places :CtrlPBookmarkDir<CR>
+
+" NERDtree
+nnoremap <Leader>browse :NERDTree<CR>
