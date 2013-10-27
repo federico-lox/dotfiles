@@ -41,7 +41,6 @@ Bundle 'git@github.com:rking/ag.vim'
 Bundle 'git@github.com:scrooloose/nerdtree'
 Bundle 'git@github.com:tpope/vim-fugitive'
 Bundle 'git@github.com:bling/vim-airline'
-" Bundle 'git@github.com:mileszs/ack.vim'
 
 " Enable filetype detection, filetype
 " plugins and indent files
@@ -180,7 +179,7 @@ set wildmode=list:longest,full
 set ofu=syntaxcomplete#Complete
 
 " Make the completion menu behave like in an IDE
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
 
 " Choose the lookup order for the tags file
 set tags=./tags,tags;
@@ -368,17 +367,19 @@ let g:airline_right_sep=''
 let g:vim_markdown_folding_disabled=1
 
 " == Custom functions and commands ==
-" quick open vimrc
+
+
+" === Quick open vimrc ===
 command Settings :e ~/.vimrc
 
-" unison shortcut
+" === Unison shortcut ===
 " command QuickSync :execute '!sh -c quick-sync'
 " nmap <Leader>s :QuickSync<CR>
 
-" go to current file's directory
+" === Go to current file's directory ===
 command Cwd :execute 'cd %:p:h'
 
-" Toggle TagBar
+" === TagBar ===
 nnoremap <Leader>tb :TagbarToggle<CR>
 
 " Find selection
@@ -394,7 +395,7 @@ vnoremap <Leader>fs y/<C-R>"<CR>
 nnoremap <Leader>v :noautocmd vimgrep //gj **/*<Bar>:cw<left><left><left><left><left><left><left><left><left><left><left><left>
 "<c-f>$Bhhi
 
-" Quick file/buffer/tags management
+" === Quick file/buffer/tags management ===
 if exists(':CtrlP')
 	nnoremap <Leader>b :CtrlPBuffer<CR>
 	nnoremap <Leader>f :CtrlP<CR>
@@ -407,7 +408,7 @@ else
 	nnoremap <Leader>t :tags<CR>
 endif
 
-" File system browsing
+" === File system browsing ===
 if exists(':NERDTree')
 	command BrowseHome :NERDTree ~/
 	command BrowseProjects :NERDTree ~/Projects
@@ -424,3 +425,14 @@ else
 	nnoremap <silent> <Leader>p :vsplit ~/Projects<CR>
 	nnoremap <silent> <Leader>cd :vsplit %:p:h<CR>
 endif
+
+" === Autocompletion ===
+" User completion (opened buffers)
+inoremap <S-space> <C-N>
+" Omnicompletion
+inoremap <C-space> <C-x><C-o>
+
+" Close preview windows probably created by the preview
+" of completions
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
