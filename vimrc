@@ -106,16 +106,25 @@ set showmatch
 "	highlight ColorColumn ctermbg=darkblue
 " endif
 
-" Highlight text beyond line lenght limit
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=DarkGrey guibg=#591A1A
-  autocmd BufEnter * match OverLength /\%80v.\+/
-augroup END
-
-" Highlight the current line when insert
-" mode is activated
 if has("autocmd")
+	" Highlight the current line when insert
+	" mode is activated
 	autocmd InsertEnter,InsertLeave * set cul!
+
+	augroup vimrc_autocmds
+		" Text beyond line lenght limit
+		autocmd BufEnter * highlight OverLength ctermbg=DarkGrey guibg=#591A1A
+		autocmd BufEnter * match OverLength /\%80v.\+/
+
+		" Trailing whitespaces
+		autocmd BufEnter * highlight TrailingWhitespace ctermbg=DarkGrey guibg=#591A1A
+		autocmd BufEnter * match TrailingWhitespace /\s\+$/
+	augroup END
+
+	" Cleanup custom matches to avoid memory leaks
+	if version >= 702
+		autocmd BufWinLeave * call clearmatches()
+	endif
 endif
 
 
@@ -149,9 +158,8 @@ endif
 " Always display the status line, even if only one window is displayed
 set laststatus=2
 
-" Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
-set cmdheight=1
+" Reduce commandline output to avoid
+" press <Enter> to continue
 set shortmess=a
 
 
@@ -164,7 +172,6 @@ set shortmess=a
 set backspace=indent,eol,start
 
 " Tab triggers autocompletion in
-" y
 " the command line
 set wildmenu
 set wildmode=list:longest,full
@@ -217,8 +224,9 @@ set autoindent
 " in its full length despite soft wrapping
 set display+=lastline
 
-" Keep 3 showing three lines of padding
-" when scrolling down/up after/before the current line
+" Keep some padding between the top/bottom edges of the
+" widnow and the cursor when scrolling up/down, the number
+" sets how many lines of text to use as the padding
 if !&scrolloff
 	set scrolloff=5
 endif
@@ -227,12 +235,6 @@ endif
 " when scrolling right/left after/before the current column
 if !&sidescrolloff
 	set sidescrolloff=5
-endif
-
-" Show trailing spaces
-set listchars="trail:."
-if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
-	let &listchars = "trail:\u2423"
 endif
 
 " === Files ===
@@ -295,7 +297,7 @@ if isdirectory(expand(s:dir))
 endif
 
 if exists('+undofile')
-  set undofile
+	set undofile
 endif
 
 " == File type settings ==
@@ -342,6 +344,7 @@ let g:ctrlp_max_files = 30000
 " maximum number of matches to show
 let g:ctrlp_max_height = 15
 
+
 " === grep.vim ===
 
 " set the right find utility on Windows
@@ -357,11 +360,23 @@ let g:ctrlp_max_height = 15
 " skip tag files
 " let g:Grep_Skip_Files='tags'
 
+" === Airline ===
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+" === Markdown mode ===
+let g:vim_markdown_folding_disabled=1
 
 " == Custom functions and commands ==
+" quick open vimrc
+command Settings :e ~/.vimrc
+
 " unison shortcut
 " command QuickSync :execute '!sh -c quick-sync'
 " nmap <Leader>s :QuickSync<CR>
+
+" go to current file's directory
+command Cwd :execute 'cd %:p:h'
 
 " Toggle TagBar
 nnoremap <Leader>tb :TagbarToggle<CR>
@@ -379,16 +394,33 @@ vnoremap <Leader>fs y/<C-R>"<CR>
 nnoremap <Leader>v :noautocmd vimgrep //gj **/*<Bar>:cw<left><left><left><left><left><left><left><left><left><left><left><left>
 "<c-f>$Bhhi
 
-" CtrlP short commands
-nnoremap <Leader>b :CtrlPBuffer<CR>
-nnoremap <Leader>f :CtrlP<CR>
-nnoremap <Leader>m :CtrlPMRUFiles<CR>
-nnoremap <Leader>t :CtrlPTag<CR>
-nnoremap <Leader>p :CtrlPBookmarkDir<CR>
+" Quick file/buffer/tags management
+if exists(':CtrlP')
+	nnoremap <Leader>b :CtrlPBuffer<CR>
+	nnoremap <Leader>f :CtrlP<CR>
+	nnoremap <Leader>m :CtrlPMRUFiles<CR>
+	nnoremap <Leader>t :CtrlPTag<CR>
+else
+	nnoremap <Leader>b :buffers<CR>:buffer<Space>
+	nnoremap <Leader>f :e<Space>
+	nnoremap <Leader>m :browse oldfiles<CR>
+	nnoremap <Leader>t :tags<CR>
+endif
 
-" NERDtree
-nnoremap <Leader>d :NERDTree<CR>
-
-" Airline
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" File system browsing
+if exists(':NERDTree')
+	command BrowseHome :NERDTree ~/
+	command BrowseProjects :NERDTree ~/Projects
+	command Browse :NERDTree %:p:h
+	nnoremap <silent> <Leader>d :NERDTree ~/<CR>
+	nnoremap <silent> <Leader>p :NERDTree ~/Projects<CR>
+	nnoremap <silent> <Leader>cd :NERDTree %:p:h<CR>
+else
+	" If NERDTree is not available use Netrw
+	command BrowseHome :vsplit ~/
+	command BrowseProjects :vsplit ~/Projects
+	command Browse :vsplit %:p:h
+	nnoremap <silent> <Leader>d :vsplit ~/<CR>
+	nnoremap <silent> <Leader>p :vsplit ~/Projects<CR>
+	nnoremap <silent> <Leader>cd :vsplit %:p:h<CR>
+endif
