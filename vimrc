@@ -117,7 +117,7 @@ if has("autocmd")
 
 		" Trailing whitespaces
 		autocmd BufEnter * highlight TrailingWhitespace ctermbg=DarkGrey guibg=#591A1A
-		autocmd BufEnter * match TrailingWhitespace /\s\+$/
+		autocmd BufEnter * 2match TrailingWhitespace /\s\+$/
 	augroup END
 
 	" Cleanup custom matches to avoid memory leaks
@@ -306,6 +306,8 @@ if has("autocmd")
 	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 	autocmd FileType php setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 	autocmd FileType javascript setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
+	autocmd FileType mkd setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd FileType markdown setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 end
 
 " == Plugins ==
