@@ -436,3 +436,8 @@ inoremap <C-space> <C-x><C-o>
 " of completions
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" === Notes ===
+command Notes :cd ~/Notes|:setfiletype mkd|:NERDTreeCWD
+command NotesUpdate :cd ~/Notes|:execute '!git pull --rebase'
+command NotesSave :cd ~/Notes|:execute '!git add . && git commit -a && git push'
