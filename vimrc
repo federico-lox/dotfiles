@@ -35,11 +35,13 @@ Bundle 'git@github.com:majutsushi/tagbar'
 Bundle 'git@github.com:juvenn/mustache.vim'
 Bundle 'git@github.com:derekwyatt/vim-scala'
 Bundle 'git@github.com:elzr/vim-json'
-Bundle 'git@github.com:altercation/vim-colors-solarized'
-" Bundle 'git@github.com:tomasr/molokai'
+Bundle 'git@github.com:plasticboy/vim-markdown'
+Bundle 'git@github.com:chriskempson/base16-vim'
 Bundle 'git@github.com:rking/ag.vim'
 Bundle 'git@github.com:scrooloose/nerdtree'
 Bundle 'git@github.com:tpope/vim-fugitive'
+Bundle 'git@github.com:bling/vim-airline'
+" Bundle 'git@github.com:mileszs/ack.vim'
 
 " Enable filetype detection, filetype
 " plugins and indent files
@@ -53,12 +55,10 @@ endif
 " === Colors ===
 " Scheme
 if has("gui_running")
-	set background=dark
-	colorscheme solarized
+	colorscheme base16-monokai
 else
 	set t_Co=256
-	set background=dark
-	colorscheme elflord 
+	colorscheme elflord
 endif
 
 " === Typography ===
@@ -68,7 +68,7 @@ if has("gui_running")
 	" Detect the platform and set the font
 	" accordingly
 	if has("win16") || has("win32") || has("win64")
-		set guifont=Consolas:h11
+		set guifont=Consolas:h12
 
 		" Maximize the window
 		au GUIEnter * simalt ~x
@@ -388,3 +388,7 @@ nnoremap <Leader>p :CtrlPBookmarkDir<CR>
 
 " NERDtree
 nnoremap <Leader>d :NERDTree<CR>
+
+" Airline
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
