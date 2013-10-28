@@ -398,41 +398,40 @@ nnoremap <Leader>v :noautocmd vimgrep //gj **/*<Bar>:cw<left><left><left><left><
 "<c-f>$Bhhi
 
 " === Quick file/buffer/tags management ===
-if exists(':CtrlP')
-	nnoremap <Leader>b :CtrlPBuffer<CR>
-	nnoremap <Leader>f :CtrlP<CR>
-	nnoremap <Leader>m :CtrlPMRUFiles<CR>
-	nnoremap <Leader>t :CtrlPTag<CR>
-else
-	nnoremap <Leader>b :buffers<CR>:buffer<Space>
-	nnoremap <Leader>f :e<Space>
-	nnoremap <Leader>m :browse oldfiles<CR>
-	nnoremap <Leader>t :tags<CR>
-endif
+function CtrlPWithFallback(command, fallback)
+	if exists(':CtrlP')
+		execute a:command
+	else
+		execute a:fallback
+	endif
+endfunction
+
+nnoremap <silent> <Leader>b :call CtrlPWithFallback(':CtrlPBuffer', ':buffers')<CR>
+nnoremap <silent> <Leader>f :call CtrlPWithFallback(':CtrlP', ':Explore')<CR>
+nnoremap <silent> <Leader>m :call CtrlPWithFallback (':CtrlPMRUFiles', ':browse oldfiles')<CR>
 
 " === File system browsing ===
-if exists(':NERDTree')
-	command BrowseHome :NERDTree ~/
-	command BrowseProjects :NERDTree ~/Projects
-	command Browse :NERDTree %:p:h
-	nnoremap <silent> <Leader>d :NERDTree ~/<CR>
-	nnoremap <silent> <Leader>p :NERDTree ~/Projects<CR>
-	nnoremap <silent> <Leader>cd :NERDTree %:p:h<CR>
-else
-	" If NERDTree is not available use Netrw
-	command BrowseHome :vsplit ~/
-	command BrowseProjects :vsplit ~/Projects
-	command Browse :vsplit %:p:h
-	nnoremap <silent> <Leader>d :vsplit ~/<CR>
-	nnoremap <silent> <Leader>p :vsplit ~/Projects<CR>
-	nnoremap <silent> <Leader>cd :vsplit %:p:h<CR>
-endif
+function BrowseFS(path)
+	" Fallback to Netrw if NERDTree is not available
+	if exists(':NERDTree')
+		execute ':NERDTree ' . a:path
+	else
+		execute ':Explore ' . a:path
+	endif
+endfunction
+
+command BrowseHome :call BrowseFS('~/')
+command BrowseProjects :call BrowseFS('~/Projects')
+command Browse :call BrowseFS('%:p:h')
+nnoremap <silent> <Leader>d :BrowseHome<CR>
+nnoremap <silent> <Leader>p :BrowseProjects<CR>
+nnoremap <silent> <Leader>cd :Browse<CR>
 
 " === Autocompletion ===
 " User completion (opened buffers)
-inoremap <S-space> <C-N>
+inoremap <C-space> <C-N>
 " Omnicompletion
-inoremap <C-space> <C-x><C-o>
+inoremap <S-space> <C-x><C-o>
 
 " Close preview windows probably created by the preview
 " of completions
@@ -440,6 +439,7 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " === Notes ===
-command Notes :cd ~/Notes|:setfiletype mkd|:NERDTreeCWD
+command Notes :cd ~/Notes|:setfiletype mkd|:call BrowseFS('')
 command NotesUpdate :cd ~/Notes|:execute '!git pull --rebase'
-command NotesSave :cd ~/Notes|:execute '!git add . && git commit -a && git push'
+command NotesSave :cd ~/Notes|:execute '!git add . && git commit -a -m "Synchronizing notes" && git push'
+
