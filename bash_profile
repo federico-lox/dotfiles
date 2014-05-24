@@ -307,3 +307,6 @@ PS1="$PS1$Color_Off >"
 
 #enable SSH compression
 sshargs=-C
+
+# enable ANSI colors
+export TERM=xterm-256color
