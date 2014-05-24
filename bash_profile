@@ -302,7 +302,7 @@ PS1="$Color_Off"
 PS1="$PS1$Yellow$Host"
 PS1="$PS1$Color_Off:"
 PS1="$PS1 $Green$PathShort"
-PS1="$PS1$Cyan"'$(__git_ps1)'
+# PS1="$PS1$Cyan"'$(__git_ps1)'
 PS1="$PS1$Color_Off >"
 
 #enable SSH compression
