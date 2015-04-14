@@ -27,3 +27,5 @@ emacs/*.dat
 emacs/*.bkp
 emacs/*.cache
 emacs/*.eld
+emacs/ido.last
+emacs/eshell
