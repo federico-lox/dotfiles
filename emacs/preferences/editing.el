@@ -42,6 +42,9 @@
 (setq scroll-step 1)
 (setq scroll-margin 2)
 
+;; Automatically reload buffers if file on disk has changed
+(global-auto-revert-mode 1)
+
 ;; nuke trailing whitespaces when writing to a file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 

@@ -23,14 +23,10 @@
 ;; Show line nd column number in modeline
 (column-number-mode t)
 
-;; Show trailing whitespace
-(setq-default show-trailing-whitespace t)
-
 ;; Highlights parenteses
 (setq-default show-paren-delay 0)
 (show-paren-mode t)
 (setq-default show-paren-style 'mixed)
-
 
 ;; No bell
 (setq ring-bell-function 'ignore)
@@ -70,4 +66,4 @@
 (global-set-key (kbd "s-t") '(lambda () (interactive)))
 
 ;; Load color theme
-(load-theme 'solarized t)
+(load-theme 'adwaita t)

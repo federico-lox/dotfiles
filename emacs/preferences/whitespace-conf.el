@@ -2,8 +2,9 @@
 ;; Whitespace display
 ;;;;
 
-;; Enable globally
-(global-whitespace-mode 1)
+;; Enable for programming language modes only
+(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
+(add-hook 'prog-mode-hook 'whitespace-mode)
 
-;; Show only tabs and trailing space
-(setq whitespace-style '(face tabs tab-mark trailing))
+;; Show only tabs and trailing spaces
+(setq-default whitespace-style '(face tabs tab-mark trailing))

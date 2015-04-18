@@ -40,9 +40,6 @@
     ;; extra syntax highlighting for clojure
     clojure-mode-extra-font-locking
 
-    ;; Solarized theme
-    color-theme-solarized
-
     ;; Company mode autocompletion
     company
 
@@ -93,9 +90,11 @@
 
     ;; edit html tags like sexps
     ;tagedit
+
     ;; git integration
-    ;magit
-))
+    magit
+
+    ))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -152,20 +151,3 @@
 ;(load "smartparens-conf.el")
 (load "smex-conf.el")
 (load "whitespace-conf.el")
-
-;; Custom section
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" "1297a022df4228b81bc0436230f211bad168a117282c20ddcba2db8c6a200743" "31a01668c84d03862a970c471edbd377b2430868eccf5e8a9aec6831f1a0908d" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
- '(frame-background-mode (quote dark)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
