@@ -1,3 +1,14 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
+;;;;
+;; Garbage collection
+;;;;
+
+;; On today's machines setting this higher will avoid the stop-the-world GC to kick in too often
+(setq gc-cons-threshold 20000000) ;20 MB
+
 ;;;;
 ;; Packages
 ;;;;
@@ -17,9 +28,9 @@
 (add-to-list 'package-archives
              '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
-;(add-to-list 'package-archives
-;             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
+             '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
 ;; Download the ELPA archive description if needed.
 ;; This informs Emacs about the latest versions of all packages, and
@@ -31,7 +42,10 @@
 ;; manually with M-x package-install
 ;; Add in your own as you wish:
 (defvar my-packages
-  '(;; integration with a Clojure REPL
+  '(;; interactively manage the kill ring
+    browse-kill-ring
+
+    ;; integration with a Clojure REPL
     cider
 
     ;; key bindings and code colorization for Clojure
@@ -49,6 +63,9 @@
     ;; Linting and syntax check
     flycheck
 
+    ;; Better fuzzy algorythm for ido
+    flx-ido
+
     ;; allow ido usage in as many contexts as possible
     ido-ubiquitous
 
@@ -61,39 +78,53 @@
     ;; JSON support
     json-mode
 
+    ;; git integration
+    magit
+
     ;; Markdown support
     markdown-mode
 
     ;; allow multiple cursors
     multiple-cursors
 
+    ;; better terminal emulation
+    multi-term
+
     ;; makes handling lisp expressions much, much easier
-    paredit
+    ;paredit
 
     ;; make the contents of the scratch buffer persistent across sessions
     persistent-scratch
 
-    ;; makes handling lisp expressions much, much easier
-    ;smartparens
+    ;; project navigation
+    projectile
 
-    ;; Sublime text themes
-    ;sublime-themes
+    ;; colorful parenthesis matching
+    ;;rainbow-delimiters
+
+    ;; Preview hex color codes inline
+    rainbow-mode
+
+    ;; makes handling lisp expressions much, much easier
+    smartparens
+
+    ;; Soft morning theme
+    soft-morning-theme
 
     ;; Enhances M-x to allow easier execution of commands
     smex
 
-    ;; project navigation
-    ;projectile
-
-    ;; colorful parenthesis matching
-    ;rainbow-delimiters
-
     ;; edit html tags like sexps
     ;tagedit
 
-    ;; git integration
-    magit
+    ;; TypeScript IDE
+    tide
 
+    ;; better management of undo tree
+    undo-tree
+
+    ;; HTML and web templates editor
+    web-mode
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -125,16 +156,14 @@
 (add-to-list 'load-path "~/.emacs.d/preferences")
 
 ;; These customizations change the way emacs looks and disable/enable
-;; some user interface elements
+;; some user interface elements, load ASAP
 (load "ui.el")
 
 ;; These customizations make editing a bit nicer.
 (load "editing.el")
 
-;; Shell integration
-(load "shell-conf.el")
-
 ;; Packages configuration
+(load "browse-kill-ring-conf.el")
 (load "clojure-mode-conf.el")
 (load "company-conf.el")
 (load "dired-conf.el")
@@ -146,8 +175,16 @@
 (load "json-mode-conf.el")
 (load "markdown-mode-conf.el")
 (load "multiple-cursors-conf.el")
-(load "paredit-conf.el")
+(load "multi-term-conf.el")
+;(load "paredit-conf.el")
 (load "persistent-scratch-conf.el")
-;(load "smartparens-conf.el")
+(load "projectile-conf.el")
+(load "rainbow-mode-conf.el")
+(load "recentf-conf.el")
+(load "smartparens-conf.el")
 (load "smex-conf.el")
+(load "theme-conf.el")
+(load "tide-conf.el")
+(load "undo-tree-conf.el")
 (load "whitespace-conf.el")
+(load "web-mode-conf.el")

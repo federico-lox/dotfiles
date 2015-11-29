@@ -7,7 +7,7 @@
 
 ;; Put all backups in ~/.emacs.d/backups
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
-											   "backups"))))
+                                               "backups"))))
 
 ;; Disable backup and autosave
 (setq backup-inhibited t)
@@ -32,7 +32,7 @@
 (electric-indent-mode +1)
 
 ;; Close delimiter pairs automatically
-(electric-pair-mode 1)
+;;(electric-pair-mode 1)
 
 ;; Wrap lines on \s+
 (setq-default word-wrap t)
@@ -44,6 +44,9 @@
 
 ;; Automatically reload buffers if file on disk has changed
 (global-auto-revert-mode 1)
+
+;; Replace highlighted text when typing
+(delete-selection-mode 1)
 
 ;; nuke trailing whitespaces when writing to a file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -59,4 +62,7 @@
   (setq ispell-extra-args '("-d en_US"))))
 
 ;; Use gnu find
-;(setq find-program "gnu-find.exe")
+(let ((cmd "gnu-find.exe"))
+  (if (and (eq system-type 'windows-nt)
+           (executable-find cmd))
+      (setq find-program cmd)))

@@ -8,10 +8,9 @@
 (smartparens-global-mode t)
 
 ;; Highlight matching pairs
-(show-smartparens-global-mode t)
+;(show-smartparens-global-mode t)
 
 ;; Enable strict mode for Lisp dialects
-(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
 (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'smartparens-strict-mode)
 (add-hook 'ielm-mode-hook #'smartparens-strict-mode)
@@ -27,7 +26,7 @@
 (setq sp-highlight-pair-overlay nil)
 
 ;; Key bindings
-(define-key sp-keymap (kbd "<delete>") 'sp-delete-char)
+;(define-key sp-keymap (kbd "<delete>") 'sp-delete-char)
 (define-key sp-keymap (kbd "C-<left>") 'sp-backward-slurp-sexp)
 (define-key sp-keymap (kbd "C-<right>") 'sp-forward-slurp-sexp)
 (define-key sp-keymap (kbd "C-S-<left>") 'sp-forward-barf-sexp)

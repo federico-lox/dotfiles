@@ -1,5 +1,6 @@
 ;;;;
 ;; User Interface
+;; This is loaded before any additional package which is not built-in.
 ;;;;
 
 ;; Disable splashcreen and welcome message
@@ -9,6 +10,14 @@
 ;; Configure scratch buffer
 (setq initial-major-mode 'text-mode)
 (setq initial-scratch-message nil)
+
+;; Set default frame size
+(let ((frame-width 125)
+      (frame-height 50))
+  (when window-system
+    (set-frame-size (selected-frame) frame-width frame-height) ;set size immediately while loading
+    (setq default-frame-alist '((width . frame-width) ;set size for any frame created later on
+                                (height . frame-height)))))
 
 ;; Disable UI elements
 (menu-bar-mode -1)
@@ -51,12 +60,14 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Font/line settings
-(when (eq system-type 'windows-nt)
-  (set-face-attribute 'default nil :font "Consolas")
-  (set-face-attribute 'default nil :height 110))
-(when (eq system-type 'darwin)
+(cond
+ ((member "Menlo" (font-family-list))
   (set-face-attribute 'default nil :font "Menlo")
   (set-face-attribute 'default nil :height 140))
+ ((member "Consolas" (font-family-list))
+  (set-face-attribute 'default nil :font "Consolas")
+  (set-face-attribute 'default nil :height 110)))
+
 (setq-default line-spacing 8)
 
 ;; No cursor in non-selected windows
@@ -64,6 +75,3 @@
 
 ;; Don't pop up font menu
 (global-set-key (kbd "s-t") '(lambda () (interactive)))
-
-;; Load color theme
-(load-theme 'adwaita t)

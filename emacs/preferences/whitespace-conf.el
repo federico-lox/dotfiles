@@ -7,4 +7,5 @@
 (add-hook 'prog-mode-hook 'whitespace-mode)
 
 ;; Show only tabs and trailing spaces
-(setq-default whitespace-style '(face tabs tab-mark trailing))
+(setq-default whitespace-style '(face tabs tab-mark lines-tail trailing))
+(setq-default whitespace-line-column 120)
